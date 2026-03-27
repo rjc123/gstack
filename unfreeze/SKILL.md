@@ -1,7 +1,7 @@
 ---
 name: unfreeze
 version: 0.1.0
-description: |
+description: (software-gstack) |
   Clear the freeze boundary set by /freeze, allowing edits to all directories
   again. Use when you want to widen edit scope without ending the session.
   Use when asked to "unfreeze", "unlock edits", "remove freeze", or

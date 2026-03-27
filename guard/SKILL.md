@@ -1,7 +1,7 @@
 ---
 name: guard
 version: 0.1.0
-description: |
+description: (software-gstack) |
   Full safety mode: destructive command warnings + directory-scoped edits.
   Combines /careful (warns before rm -rf, DROP TABLE, force-push, etc.) with
   /freeze (blocks edits outside a specified directory). Use for maximum safety

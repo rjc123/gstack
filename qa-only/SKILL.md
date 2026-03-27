@@ -2,7 +2,7 @@
 name: qa-only
 preamble-tier: 4
 version: 1.0.0
-description: |
+description: (software-gstack) |
   Report-only QA testing. Systematically tests a web application and produces a
   structured report with health score, screenshots, and repro steps — but never
   fixes anything. Use when asked to "just report bugs", "qa report only", or

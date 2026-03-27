@@ -1,7 +1,7 @@
 ---
 name: connect-chrome
 version: 0.1.0
-description: |
+description: (software-gstack) |
   Launch real Chrome controlled by gstack with the Side Panel extension auto-loaded.
   One command: connects Claude to a visible Chrome window where you can watch every
   action in real time. The extension shows a live activity feed in the Side Panel.

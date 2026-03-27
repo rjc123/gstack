@@ -2,7 +2,7 @@
 name: gstack
 preamble-tier: 1
 version: 1.1.0
-description: |
+description: (software-gstack) |
   Fast headless browser for QA testing and site dogfooding. Navigate pages, interact with
   elements, verify state, diff before/after, take annotated screenshots, test responsive
   layouts, forms, uploads, dialogs, and capture bug evidence. Use when asked to open or

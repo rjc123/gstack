@@ -2,7 +2,7 @@
 name: codex
 preamble-tier: 3
 version: 1.0.0
-description: |
+description: (software-gstack) |
   OpenAI Codex CLI wrapper — three modes. Code review: independent diff review via
   codex review with pass/fail gate. Challenge: adversarial mode that tries to break
   your code. Consult: ask codex anything with session continuity for follow-ups.
