@@ -2,11 +2,11 @@
 name: autoplan
 preamble-tier: 3
 version: 1.0.0
-description: (software-gstack) |
+description: (software-gstack)
   Auto-review pipeline — reads the full CEO, design, and eng review skills from disk
   and runs them sequentially with auto-decisions using 6 decision principles. Surfaces
   taste decisions (close approaches, borderline scope, codex disagreements) at a final
-  approval gate. One command, fully reviewed plan out.
+  approval gate. One command, fully reviewed plan out. 
   Use when asked to "auto review", "autoplan", "run all reviews", "review this plan
   automatically", or "make the decisions for me".
   Proactively suggest when the user has a plan file and wants to run the full review

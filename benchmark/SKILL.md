@@ -2,11 +2,11 @@
 name: benchmark
 preamble-tier: 1
 version: 1.0.0
-description: (software-gstack) |
+description: (software-gstack)
   Performance regression detection using the browse daemon. Establishes
   baselines for page load times, Core Web Vitals, and resource sizes.
   Compares before/after on every PR. Tracks performance trends over time.
-  Use when: "performance", "benchmark", "page speed", "lighthouse", "web vitals",
+  Use when asked to "performance", "benchmark", "page speed", "lighthouse", "web vitals",
   "bundle size", "load time".
 allowed-tools:
   - Bash

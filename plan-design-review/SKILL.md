@@ -2,7 +2,7 @@
 name: plan-design-review
 preamble-tier: 3
 version: 2.0.0
-description: (software-gstack) |
+description: (software-gstack)
   Designer's eye plan review — interactive, like CEO and Eng review.
   Rates each design dimension 0-10, explains what would make it a 10,
   then fixes the plan to get there. Works in plan mode. For live site

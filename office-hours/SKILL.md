@@ -2,10 +2,10 @@
 name: office-hours
 preamble-tier: 3
 version: 2.0.0
-description: (software-gstack) |
+description: (software-gstack)
   YC Office Hours — two modes. Startup mode — six forcing questions that expose
   demand reality, status quo, desperate specificity, narrowest wedge, observation,
-  and future-fit. Builder mode: design thinking brainstorming for side projects,
+  and future-fit. Builder mode - design thinking brainstorming for side projects,
   hackathons, learning, and open source. Saves a design doc.
   Use when asked to "brainstorm this", "I have an idea", "help me think through
   this", "office hours", or "is this worth building".
