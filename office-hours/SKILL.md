@@ -2,10 +2,10 @@
 name: office-hours
 preamble-tier: 3
 version: 2.0.0
-description: (software-gstack)
-  YC Office Hours — two modes. Startup mode — six forcing questions that expose
+description: |
+  YC Office Hours — two modes. Startup mode: six forcing questions that expose
   demand reality, status quo, desperate specificity, narrowest wedge, observation,
-  and future-fit. Builder mode - design thinking brainstorming for side projects,
+  and future-fit. Builder mode: design thinking brainstorming for side projects,
   hackathons, learning, and open source. Saves a design doc.
   Use when asked to "brainstorm this", "I have an idea", "help me think through
   this", "office hours", or "is this worth building".
@@ -362,6 +362,11 @@ Understand the project and the area the user wants to change.
 ```bash
 eval "$(~/.claude/skills/gstack/bin/gstack-slug 2>/dev/null)"
 ```
+
+**Step 0: Infer the project slug.**
+- If the user's invocation mentions a specific project or venture by name (e.g., "office hours on the t5by project", "/office-hours auto-brander"), derive the slug from that name — lowercase, kebab-case. Examples: "t5by", "auto-brander", "the-five-billion-year-project". **Override the gstack-slug output with this value.**
+- Otherwise, use the gstack-slug output as-is.
+- The **project slug** is used wherever `$SLUG` appears in this skill — for design doc paths, lineage checks, and discovery.
 
 1. Read `CLAUDE.md`, `TODOS.md` (if they exist).
 2. Run `git log --oneline -30` and `git diff origin/main --stat 2>/dev/null` to understand recent context.
@@ -926,14 +931,31 @@ USER=$(whoami)
 DATETIME=$(date +%Y%m%d-%H%M%S)
 ```
 
+**Step 0: Infer the output directory.** Run these checks in order and use the first match:
+
+```bash
+# Check 1: ventures subfolder
+[ -d "$HOME/projects/ventures/$SLUG" ] && echo "FOUND_VENTURES: $HOME/projects/ventures/$SLUG"
+# Check 2: generic projects subfolder
+[ -d "$HOME/projects/$SLUG" ] && echo "FOUND_PROJECTS: $HOME/projects/$SLUG"
+```
+
+- If `FOUND_VENTURES` — suggest `~/projects/ventures/{slug}/` as the output directory.
+- If `FOUND_PROJECTS` — suggest `~/projects/{slug}/` as the output directory.
+- Otherwise — default to `~/.gstack/projects/{slug}/`.
+
+Before writing, confirm with the user via AskUserQuestion: "I'll save the design doc to `{inferred path}`. OK to proceed, or use a different location?" Accept a custom path via the Other option. Use the confirmed path as `DESIGN_DOC_DIR` for all writes and lineage checks below.
+
 **Design lineage:** Before writing, check for existing design docs on this branch:
 ```bash
 setopt +o nomatch 2>/dev/null || true  # zsh compat
-PRIOR=$(ls -t ~/.gstack/projects/$SLUG/*-$BRANCH-design-*.md 2>/dev/null | head -1)
+PRIOR=$(ls -t "$DESIGN_DOC_DIR"/*-$BRANCH-design-*.md 2>/dev/null | head -1)
+# Also check legacy ~/.gstack/projects/$SLUG/ for continuity
+[ -z "$PRIOR" ] && PRIOR=$(ls -t ~/.gstack/projects/$SLUG/*-$BRANCH-design-*.md 2>/dev/null | head -1)
 ```
 If `$PRIOR` exists, the new doc gets a `Supersedes:` field referencing it. This creates a revision chain — you can trace how a design evolved across office hours sessions.
 
-Write to `~/.gstack/projects/{slug}/{user}-{branch}-design-{datetime}.md`:
+Write to `{DESIGN_DOC_DIR}/{user}-{branch}-design-{datetime}.md`:
 
 ### Startup mode design doc template:
 
